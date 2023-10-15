@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # https://docs.vagrantup.com.
+
+  # https://vagrantcloud.com/search.
+  config.vm.box = "ubuntu/jammy64"  # 22.04 LTS
+  config.vm.synced_folder "./build", "/build"
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo dpkg -i /build/python-deb.deb
+  SHELL
+end

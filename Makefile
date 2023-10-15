@@ -45,3 +45,21 @@ build-all:
 
 docker-build-all:
 	docker-compose run -u `id -u`:`id -g` app make build-all
+
+vagrant-up:
+	vagrant up
+
+vagrant-stop:
+	vagrant halt
+	vagrant destroy -f
+
+vagrant-ssh:
+	vagrant ssh
+
+vagrant-ssh-logs:
+	vagrant ssh --command "sudo journalctl -u python-deb -b -f"
+
+vagrant-docker-full-test:
+	make build-all
+	make vagrant-up
+	make vagrant-ssh-logs
