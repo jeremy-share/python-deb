@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl enable python-deb
+systemctl start python-deb

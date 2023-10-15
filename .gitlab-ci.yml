@@ -1,0 +1,40 @@
+services:
+  - docker:dind
+
+stages:
+  - build-bin
+  - build-deb
+
+build-bin:
+  stage: build-bin
+  retry: 0
+  image: python:3.11-bookworm
+  script:
+    - make pip-install
+    - make build-bin
+  artifacts:
+    paths:
+      - build/binaries/project_deb_bin
+    expire_in: 1 week
+  only:
+    - master
+
+build-deb:
+  stage: build-deb
+  dependencies:
+    - build-bin
+  retry: 0
+  image: ubuntu:22.04
+  before_script:
+    - DEBIAN_FRONTEND=noninteractive apt-get update
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y make
+    - make apt-install
+    - git fetch --tags
+  script:
+    - make build-deb
+  artifacts:
+    paths:
+      - build/python-deb.deb
+    expire_in: 1 week
+  only:
+    - master

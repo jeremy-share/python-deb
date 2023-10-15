@@ -1,0 +1,8 @@
+[Unit]
+Description=python-deb
+
+[Service]
+ExecStart=/usr/bin/project_deb_bin
+
+[Install]
+WantedBy=multi-user.target

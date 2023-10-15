@@ -1,0 +1,9 @@
+Package: python-deb
+Version: {{version}}
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: {{size_in_kb}}
+Maintainer: Your Name <you@example.com>
+Description: Python Deb Demo

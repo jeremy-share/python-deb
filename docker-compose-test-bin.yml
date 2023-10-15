@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  app:
+    image: debian:bookworm
+    volumes:
+      - ./build/binaries:/bin-project
+    entrypoint: /bin-project/project_deb_demo_bin
+    network_mode: host
