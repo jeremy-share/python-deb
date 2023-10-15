@@ -17,11 +17,6 @@ build-bin:
 docker-build-bin:
 	docker-compose run -u `id -u`:`id -g` app make build-bin
 
-cleanup:
-	rm build/binaries/project_deb_demo* || true
-	rm -rf build/project_deb_demo || true
-	rm *.spec || true
-
 test-bin:
 	docker-compose -f docker-compose-test-bin.yml up
 

@@ -5,5 +5,5 @@ services:
     image: debian:bookworm
     volumes:
       - ./build/binaries:/bin-project
-    entrypoint: /bin-project/project_deb_demo_bin
+    entrypoint: /bin-project/project_deb_bin
     network_mode: host

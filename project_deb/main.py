@@ -4,7 +4,7 @@ import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 from dotenv import load_dotenv
 
-from project_deb_demo.jobs import demo_job
+from project_deb.jobs import demo_job
 
 logger = logging.getLogger(__name__)
 
